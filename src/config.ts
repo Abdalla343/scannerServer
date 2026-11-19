@@ -29,8 +29,8 @@ export function loadConfig(overrides: Partial<Config> = {}): Config {
   const dataDir = path.resolve(overrides.dataDir ?? process.env.DATA_DIR ?? "./data");
   fs.mkdirSync(dataDir, { recursive: true });
   return {
-    port: Number(process.env.PORT ?? 3000),
-    host: process.env.HOST ?? "0.0.0.0",
+    port: Number(process.env.SERVER_PORT ?? process.env.PORT ?? 3000),
+    host: process.env.SERVER_IP ?? process.env.HOST ?? "0.0.0.0",
     dataDir,
     jwtSecret: loadOrCreateSecret(dataDir),
     jwtTtl: process.env.JWT_TTL ?? "12h",
