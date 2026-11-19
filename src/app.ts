@@ -21,7 +21,11 @@ export function createApp(cfg: Config, db: Db, store: WorkerStore = new WorkerSt
   app.use(helmet({
     contentSecurityPolicy: { directives: {
       defaultSrc: ["'self'"], scriptSrc: ["'self'", "'wasm-unsafe-eval'"], workerSrc: ["'self'", "blob:"],
-      imgSrc: ["'self'", "data:", "blob:"], mediaSrc: ["'self'", "blob:"], connectSrc: ["'self'"],
+      //imgSrc: ["'self'", "data:", "blob:"], mediaSrc: ["'self'", "blob:"], connectSrc: ["'self'"],
+		imgSrc: ["'self'", "data:", "blob:"],
+mediaSrc: ["'self'", "blob:"],
+connectSrc: ["'self'", "https://abdendance.vercel.app"],
+		
       styleSrc: ["'self'", "'unsafe-inline'"], upgradeInsecureRequests: https ? [] : null } },
     hsts: https,
   }));
